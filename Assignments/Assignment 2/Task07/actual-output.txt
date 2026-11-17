@@ -1,0 +1,9 @@
+Q7 - Diagnose and redesign: playlist Up Next front-removal bottleneck
+Same workload: fill n items, then remove every item from the front.
+n=2000 | ArrayList 0.648 ms | ArrayDeque 0.320 ms | ratio 2.03x
+n=10000 | ArrayList 1.572 ms | ArrayDeque 0.527 ms | ratio 2.99x
+n=30000 | ArrayList 28.487 ms | ArrayDeque 0.926 ms | ratio 30.76x
+Diagnosis: ArrayList.remove(0) shifts the remaining elements on every removal.
+Objective: preserve FIFO behaviour while avoiding repeated shifts; target amortized O(1) removal at the front.
+Redesign: ArrayDeque.addLast/removeFirst. Original total work O(n^2); redesigned total work O(n).
+Trade-off: ArrayDeque has no indexed access; retain ArrayList for random-access playlist browsing.
