@@ -1,0 +1,2 @@
+Transfers completed without deadlock: true
+Sum of tokens collected: 210 (expected 210)
