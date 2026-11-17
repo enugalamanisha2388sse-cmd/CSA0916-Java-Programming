@@ -1,0 +1,15 @@
+Input: account=12345, amount=500
+Cash dispensed: 500.0
+ATM session cleanup completed
+Input: account=abc, amount=500
+Number format error: enter numeric values
+ATM session cleanup completed
+Input: account=12345, amount=-20
+Validation error: Withdrawal must be positive
+ATM session cleanup completed
+Input: account=12345, amount=1500
+Validation error: Insufficient balance
+ATM session cleanup completed
+Input: account=12345, amount=100
+I/O error: Card-reader file missing: /tmp/missing-card-reader.dat
+ATM session cleanup completed
