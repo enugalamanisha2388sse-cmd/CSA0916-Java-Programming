@@ -1,0 +1,5 @@
+TASK 4 - DRAWING PAD GUI
+Launch with: javac Main.java && java Main
+Click the white canvas: a blue dot is stored and the click counter increments.
+Minimise and restore: stored dots should remain visible after repaint.
+Capture before/after screenshots locally.
