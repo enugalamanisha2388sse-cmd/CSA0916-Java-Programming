@@ -17,7 +17,7 @@ public class ParkingFacility {
         slots[floor][slot] = null; return true;
     }
     public static void main(String[] args) {
-        ParkingFacility p = new ParkingFacility(new int[] {2, 1, 2});
+        ParkingFacility p = new ParkingFacility(new int[] {2, 1});
         System.out.println(java.util.Arrays.toString(p.allocate("TN01")));
         System.out.println(java.util.Arrays.toString(p.allocate("TN02")));
         System.out.println(java.util.Arrays.toString(p.allocate("TN03")));
