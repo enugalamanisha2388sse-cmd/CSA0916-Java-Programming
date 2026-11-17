@@ -1,0 +1,4 @@
+TASK 1 - GUI DESIGN REVIEW
+Problems: UI/business coupling, == String comparison, missing validation, blocking I/O, sleep(), SQL injection risk, resource leaks, weak exception handling, unclear receipt action.
+Redesign: FeeWindow -> FeeController -> FeeService -> FeeRepository
+Shared listener has fewer objects; separate actions have clearer responsibilities.
