@@ -1,0 +1,5 @@
+# Task04 – A4: Serialization Design
+Mark Resident.password transient because secrets should not be serialized in plaintext; mark Resident.connection transient because a live JDBC Connection is process/runtime state and not serializable. Consider not storing passwords at all; persist a credential hash in a protected store.
+Serializing Hostel traverses its reachable object graph: Room objects and their Resident objects are serialized unless transient/static or otherwise excluded. Every reachable non-transient object must be serializable or NotSerializableException occurs.
+Adding phoneNumber changes class shape. Old streams deserialize with a default null value for a new reference field unless migration/default logic is supplied. serialVersionUID controls compatibility checks; explicitly version and migrate formats.
+Java serialization is Java-specific and risky for untrusted input. CSV is simple/interoperable but needs escaping and schema handling; JSON is portable and readable with explicit schema/version strategy.
