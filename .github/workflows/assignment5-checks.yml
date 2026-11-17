@@ -1,0 +1,25 @@
+name: Assignment 5 Java compile checks
+on:
+  push:
+    paths:
+      - 'Assignments/Assignment 5/**'
+      - '.github/workflows/assignment5-checks.yml'
+  workflow_dispatch:
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Compile task sources
+        shell: bash
+        run: |
+          set -e
+          for task in "Assignments/Assignment 5"/Task*; do
+            echo "Compiling $task"
+            mkdir -p "$RUNNER_TEMP/$(basename "$task")"
+            javac -d "$RUNNER_TEMP/$(basename "$task")" "$task"/*.java
+          done
