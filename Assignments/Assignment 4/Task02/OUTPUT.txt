@@ -1,0 +1,4 @@
+TASK 2 - HOSPITAL APPOINTMENT EVENT DESIGN
+Department selection: ItemEvent -> ItemListener -> refresh doctor list.
+Book click: ActionEvent -> ActionListener -> validate -> check availability -> persist -> confirmation.
+Window state and close actions are handled by WindowListener / WindowAdapter.
