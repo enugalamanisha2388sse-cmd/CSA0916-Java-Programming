@@ -1,0 +1,7 @@
+Station-C scanned 20 scripts
+Station-D scanned 25 scripts
+Station-A scanned 25 scripts
+Station-B scanned 30 scripts
+All Thread stations completed; alive=false
+Station-R scanned 10 scripts (Runnable)
+Total scripts represented: 110
