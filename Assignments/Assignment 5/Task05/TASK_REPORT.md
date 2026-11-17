@@ -1,0 +1,5 @@
+# Task05 – A5: Correctness and Safety
+Transaction pseudocode: disable auto-commit; debit hostel wallet by ₹500 only if balance sufficient; verify one row updated; credit canteen wallet by ₹500; verify one row updated; commit. On any exception or unexpected row count, rollback; restore auto-commit in finally. Lock/update rows consistently to avoid concurrent lost updates.
+Unsafe concatenation allows crafted input to alter SQL syntax and potentially make a WHERE condition true. Do not provide a real credential-bypass string in production systems; demonstrate only in a disposable local database with dummy accounts.
+PreparedStatement: SELECT id FROM users WHERE username=? AND password_hash=?; bind username and a securely verified password hash. Prefer password hashing with a dedicated password-hashing algorithm rather than plaintext comparison.
+One transaction provides atomicity: both wallet changes commit or neither does. Two independent auto-commit updates can leave money debited without credit (or vice versa).
