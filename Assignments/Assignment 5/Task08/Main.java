@@ -72,6 +72,22 @@ public class Main {
         }
     }
 
+    // PreparedStatement with auto-commit enabled: each insert commits independently.
+    private static void insertPreparedAutoCommit(Connection connection, int count)
+            throws SQLException {
+        boolean oldAutoCommit = connection.getAutoCommit();
+        connection.setAutoCommit(true);
+
+        try (PreparedStatement statement = connection.prepareStatement(INSERT_SQL)) {
+            for (int i = 1; i <= count; i++) {
+                bind(statement, i);
+                statement.executeUpdate();
+            }
+        } finally {
+            connection.setAutoCommit(oldAutoCommit);
+        }
+    }
+
     private static void insertWithBatch(Connection connection, int count)
             throws SQLException {
         boolean oldAutoCommit = connection.getAutoCommit();
@@ -178,6 +194,8 @@ public class Main {
                 measure(connection, "Statement", size, Main::insertWithStatement);
                 measure(connection, "PreparedStatement", size,
                     Main::insertWithPreparedStatement);
+                measure(connection, "PreparedStatement auto-commit", size,
+                    Main::insertPreparedAutoCommit);
                 measure(connection, "PreparedStatement batch", size,
                     Main::insertWithBatch);
             }
