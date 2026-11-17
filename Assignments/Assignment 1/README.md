@@ -22,13 +22,14 @@ Each task folder contains its analysis, design reasoning, alternative concept an
 ## Source files
 - `ParkingFacility.java` – jagged-array allocation/release implementation from Task 3.
 - `Main.java` – integrated object-oriented system: users, passes, vehicle hierarchy, ticket lifecycle, active-ticket map, fee calculation and Task 12 categories.
+- `VehicleFactory.java` – validates supported vehicle categories and rejects unknown types.
 - `ParkingSystemTests.java` – dependency-free regression tests for allocation, rates, passes, duplicate entry and exit.
 - `README.md` – this guide.
 
 ## Requirements and commands
 JDK 17 or later. From this directory:
 ```bash
-javac Main.java ParkingFacility.java ParkingSystemTests.java
+javac Main.java ParkingFacility.java VehicleFactory.java ParkingSystemTests.java
 java ParkingFacility
 java Main
 java Main fee-demo
@@ -47,7 +48,7 @@ true
 The PDF does not provide numeric standard vehicle rates or exact first-hour/additional-hour/daily-maximum slab values. The sample program therefore uses clearly labelled illustrative rates and started-hour billing; confirm the final tariff with faculty. EV charging energy is passed explicitly to the exit overload (`exit(regNo, exitTime, chargingKWh)`), rather than assuming a fixed amount. E-bike parking uses a flat illustrative Rs 40 per visit. Delivery vans are billed at double the car rate only for the actual minutes overlapping 09:00–17:00. Visitor one-day passes are valid only on their purchased date. Student/staff monthly passes are free; visitor monthly-pass flags do not waive fees.
 
 ## Validation status
-A GitHub Actions workflow was added to compile and run the regression suite on pushes. Check the Actions tab for its run result. Until a successful CI run or local execution is visible, treat the source as pushed but not independently verified. Add screenshots of your own executed output before final academic submission.
+A GitHub Actions workflow was added to compile and run the regression suite on pushes. Check the Actions tab for its run result. The latest GitHub Actions run has successfully completed compilation, the regression-test step, and the FeeDemo step. The workflow is available in the repository Actions tab. Add screenshots of your own execution before final academic submission. Add screenshots of your own executed output before final academic submission.
 
 ## Complexity summary
 - Jagged-array allocation: O(total slots) worst-case; release by known coordinates: O(1); slot storage O(total slots).
