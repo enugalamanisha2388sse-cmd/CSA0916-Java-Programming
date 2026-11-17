@@ -54,6 +54,14 @@ public class ParkingSystemTests {
             check(student.hasValidPass(now), "student monthly pass");
             check(!visitor.hasValidPass(now), "visitor monthly pass not eligible");
         });
+        test("vehicle factory rejects unknown type", () -> {
+            boolean rejected = false;
+            try { VehicleFactory.create("hovercraft", "XX01"); }
+            catch (IllegalArgumentException expected) { rejected = true; }
+            check(rejected, "unknown vehicle type rejected");
+            check(VehicleFactory.create("e-bike", "EB02") instanceof EBike, "e-bike factory");
+            check(VehicleFactory.create("delivery-van", "DV02") instanceof DeliveryVan, "van factory");
+        });
         test("integrated entry and exit", () -> {
             CampusParkingSystem system = new CampusParkingSystem(new int[] {1, 1});
             system.registerUser(new ParkingUser("VIS", UserCategory.VISITOR, false));
