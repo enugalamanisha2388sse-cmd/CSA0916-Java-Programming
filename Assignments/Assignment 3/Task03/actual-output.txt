@@ -1,0 +1,7 @@
+Manual failing run:
+Manual version logged: Corrupt store file: store-B.csv
+Tracked resources still open: 0
+Try-with-resources failing run:
+Try-with-resources logged: Corrupt store file: store-B.csv
+Tracked resources still open: 0
+Daily sales total: 425
