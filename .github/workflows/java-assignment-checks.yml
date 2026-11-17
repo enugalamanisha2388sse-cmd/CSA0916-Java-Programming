@@ -15,7 +15,7 @@ jobs:
           java-version: '17'
       - name: Compile Assignment 1
         working-directory: Assignments/Assignment 1
-        run: javac Main.java ParkingFacility.java ParkingSystemTests.java
+        run: javac Main.java ParkingFacility.java VehicleFactory.java ParkingSystemTests.java
       - name: Run regression tests
         working-directory: Assignments/Assignment 1
         run: java ParkingSystemTests
