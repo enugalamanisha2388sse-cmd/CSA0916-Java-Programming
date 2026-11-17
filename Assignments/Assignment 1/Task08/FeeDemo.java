@@ -29,6 +29,7 @@ class Car extends Vehicle {
 }
 class ElectricCar extends Car implements Chargeable {
     ElectricCar(String regNo) { super(regNo); }
+    @Override protected double ratePerHour() { return 60.0; }
     @Override public double chargingFee(int kWh) {
         if (kWh < 0) throw new IllegalArgumentException("Negative kWh");
         return kWh * 3.0;
