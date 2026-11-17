@@ -1,0 +1,10 @@
+Q6 - Priority triage
+Waiting in treatment order: [Meena(S1), Kumar(S1), Lata(S2), Arun(S2), Ravi(S3), John(S3), Nila(S4), Asha(S5)]
+Treatment order: Meena(S1) Kumar(S1) Lata(S2) Arun(S2) Ravi(S3) John(S3) Nila(S4) Asha(S5)
+Required example: Meena(S1) Kumar(S1) Lata(S2) Arun(S2) Ravi(S3) John(S3) Nila(S4) Asha(S5)
+Growth investigation (timings vary):
+n=1000 add 1.656 ms, remove-all 1.523 ms
+n=10000 add 2.242 ms, remove-all 2.359 ms
+n=50000 add 6.300 ms, remove-all 4.336 ms
+Complexity: offer O(log n), poll O(log n), peek O(1), storage O(n).
+Fairness: strict severity priority can starve minor cases; use a maximum-wait policy/aging with periodic priority recalculation.
