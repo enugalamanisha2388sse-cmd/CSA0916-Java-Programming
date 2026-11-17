@@ -29,7 +29,7 @@ public class ParkingFacility {
         return true;
     }
     public static void main(String[] args) {
-        ParkingFacility p = new ParkingFacility(new int[] {2, 1, 3});
+        ParkingFacility p = new ParkingFacility(new int[] {2, 1});
         System.out.println(java.util.Arrays.toString(p.allocate("TN01AB1234")));
         System.out.println(java.util.Arrays.toString(p.allocate("TN02CD5678")));
         System.out.println(java.util.Arrays.toString(p.allocate("TN03EF9012")));
