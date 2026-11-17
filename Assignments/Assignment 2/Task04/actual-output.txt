@@ -1,0 +1,8 @@
+Q4 - Pharmacy inventory map comparison
+n=1000 | 100k lookups HashMap 456.250 ms, TreeMap 201.863 ms | first sorted=MED000001, insertion-order=MED001000 | first-key iterator setup TreeMap 0.230 ms, LinkedHashMap 0.213 ms
+n=10000 | 100k lookups HashMap 135.784 ms, TreeMap 88.510 ms | first sorted=MED000001, insertion-order=MED010000 | first-key iterator setup TreeMap 0.066 ms, LinkedHashMap 0.019 ms
+n=50000 | 100k lookups HashMap 104.041 ms, TreeMap 88.373 ms | first sorted=MED000001, insertion-order=MED050000 | first-key iterator setup TreeMap 0.071 ms, LinkedHashMap 0.020 ms
+Insertion order: [MED003, MED001, MED002]
+Code order: [MED001, MED002, MED003]
+Recommendation: HashMap for fast lookup plus TreeMap for sorted reporting, or TreeMap alone when sorted traversal is a primary requirement.
+Hashtable is legacy-synchronised; modern code normally uses HashMap and explicit concurrency choices when needed.
