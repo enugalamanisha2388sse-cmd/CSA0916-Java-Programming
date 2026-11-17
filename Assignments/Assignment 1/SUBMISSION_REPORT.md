@@ -15,6 +15,7 @@ Each Task folder contains:
 - Java source code for the task.
 - `REPORT.md` with task explanation, design choices and alternative/complexity discussion where applicable.
 - `OUTPUT.txt` with the expected/reference console output.
+- `actual-output.txt` with console output captured from the GitHub Actions JDK 17 run.
 
 | Task | Topic | Main source |
 |---|---|---|
@@ -40,7 +41,9 @@ java MainClassName
 Use the main class name shown in the task table / task README. For Task 3 and Task 11, run `java ParkingFacility`. For Task 8, run `java FeeDemo`.
 
 ## Automated validation
-The repository includes `.github/workflows/assignment1-task-checks.yml`. It compiles and runs each task independently on JDK 17 and uploads one console-output artifact per task to the corresponding GitHub Actions run. See the Actions tab for the result and downloadable artifacts.
+The repository includes `.github/workflows/assignment1-task-checks.yml`. All 12 task jobs completed successfully on JDK 17 (12/12 passed) in the run linked below. Each task's captured console output is also committed as `actual-output.txt`, and a downloadable artifact is available from the Actions run.
+
+Successful run: https://github.com/enugalamanisha2388sse-cmd/CSA0916-Java-Programming/actions/runs/44128551529
 
 ## Evidence and academic integrity note
 The committed `OUTPUT.txt` files are reference/expected output records, not screenshots and not a claim that the student personally executed the programs. After running each program on your own computer:
