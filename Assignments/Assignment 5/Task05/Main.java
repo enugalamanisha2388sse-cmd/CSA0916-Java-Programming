@@ -86,7 +86,7 @@ public class Main {
     public static void main(String[] args) {
         try (Connection connection = openConnection()) {
             if (args.length > 0 && args[0].equalsIgnoreCase("login-demo")) {
-                String testInput = "' OR '1'='1";
+                String testInput = "' OR '1'='1' -- ";
                 System.out.println("Unsafe login accepted test input: "
                     + unsafeLogin(connection, testInput, "not-a-password"));
                 System.out.println("PreparedStatement accepted test input: "
