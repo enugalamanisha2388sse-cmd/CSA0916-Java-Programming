@@ -1,0 +1,7 @@
+Q2 - Playlist collection experiments (single illustrative run; timings vary)
+n=1000 | front insert x1000: ArrayList 0.801 ms, LinkedList 0.473 ms | random get x1000: 0.425 ms, 2.162 ms | iterate: 0.630 ms, 1.613 ms
+n=10000 | front insert x1000: ArrayList 0.696 ms, LinkedList 0.122 ms | random get x2000: 0.164 ms, 12.384 ms | iterate: 0.553 ms, 0.674 ms
+n=50000 | front insert x1000: ArrayList 3.838 ms, LinkedList 0.065 ms | random get x2000: 0.140 ms, 36.249 ms | iterate: 1.618 ms, 1.677 ms
+ArrayDeque Up Next: [Track A, Track B, Track C]; play next = Track A
+Guidance: ArrayList suits append + frequent indexed reads/iteration; reconsider it for frequent front/middle insertions or removals.
+ArrayDeque is a strong fit for a double-ended Up Next queue; it does not provide indexed access.
