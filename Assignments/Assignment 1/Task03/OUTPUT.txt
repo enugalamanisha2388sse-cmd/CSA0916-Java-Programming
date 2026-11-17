@@ -1,0 +1,15 @@
+# Output record – Task 03
+
+**Status:** Expected/reference console output, prepared from the source and assignment brief. This is not a screenshot and is not claimed as a verified local execution.
+
+```text
+Expected output from the assignment brief:
+[0, 0]
+[0, 1]
+[1, 0]
+null
+true false false
+[0, 1]
+```
+
+Run the Java source in this folder to capture your actual output screenshot. Replace any runtime placeholders (such as timestamps) with the values from your run.
