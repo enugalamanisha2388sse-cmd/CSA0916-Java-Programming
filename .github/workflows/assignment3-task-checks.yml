@@ -1,0 +1,37 @@
+name: Assignment 3 Java Task Checks
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'Assignments/Assignment 3/**'
+      - '.github/workflows/assignment3-task-checks.yml'
+  workflow_dispatch:
+
+jobs:
+  compile-and-run:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        task: [Task01, Task02, Task03, Task04, Task05, Task06, Task07]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Compile and execute ${{ matrix.task }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "Assignments/Assignment 3/${{ matrix.task }}"
+          javac Main.java
+          java Main | tee "actual-output.txt"
+      - name: Upload execution output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: assignment3-${{ matrix.task }}-output
+          path: 'Assignments/Assignment 3/${{ matrix.task }}/actual-output.txt'
+          if-no-files-found: ignore
