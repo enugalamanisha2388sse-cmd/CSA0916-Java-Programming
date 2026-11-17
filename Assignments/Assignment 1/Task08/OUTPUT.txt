@@ -1,0 +1,13 @@
+# Output record – Task 08
+
+**Status:** Expected/reference console output, prepared from the source and assignment brief. This is not a screenshot and is not claimed as a verified local execution.
+
+```text
+Expected output from the assignment brief:
+TwoWheeler TN01A1 -> Rs 30.0
+Car TN02B2 -> Rs 90.0
+ElectricCar TN03C3 -> Rs 210.0
+true
+```
+
+Run the Java source in this folder to capture your actual output screenshot. Replace any runtime placeholders (such as timestamps) with the values from your run.
