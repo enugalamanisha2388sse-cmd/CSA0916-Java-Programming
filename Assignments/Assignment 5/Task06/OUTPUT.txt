@@ -1,0 +1,2 @@
+This file is a run/evidence guide, not a verified execution transcript. Run Main.java locally and replace/add the captured console output. Add screenshots for GUI/database evidence where applicable. Record measured timings from your own machine; do not submit estimated timings as measurements.
+Task 6 – see TASK_REPORT.md for required tests and expected behaviour.
