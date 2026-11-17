@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS buspass_test;
+USE buspass_test;
+
+CREATE TABLE IF NOT EXISTS student (
+    id INT PRIMARY KEY,
+    register_no VARCHAR(32) NOT NULL UNIQUE,
+    name VARCHAR(120) NOT NULL,
+    email VARCHAR(160) NOT NULL
+);
