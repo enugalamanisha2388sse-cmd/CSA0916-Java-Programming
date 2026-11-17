@@ -1,0 +1,12 @@
+Run 1 - Seats sold: 10
+Run 2 - Seats sold: 10
+Run 3 - Seats sold: 10
+Run 4 - Seats sold: 10
+Run 5 - Seats sold: 10
+Run 6 - Seats sold: 10
+Run 7 - Seats sold: 10
+Run 8 - Seats sold: 10
+Run 9 - Seats sold: 10
+Run 10 - Seats sold: 10
+Expected seats sold per run: 10
+All runs preserve the one-booking-per-seat invariant.
