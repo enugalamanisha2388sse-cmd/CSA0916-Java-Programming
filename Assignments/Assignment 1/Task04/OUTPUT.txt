@@ -1,0 +1,11 @@
+# Output record – Task 04
+
+**Status:** Expected/reference console output, prepared from the source and assignment brief. This is not a screenshot and is not claimed as a verified local execution.
+
+```text
+Expected console output:
+Ticket#1001 TN01AA1111 floor=0 slot=2 entry=<runtime LocalDateTime>
+Ticket#1002 TN02BB2222 floor=1 slot=0 entry=2026-11-17T09:00
+```
+
+Run the Java source in this folder to capture your actual output screenshot. Replace any runtime placeholders (such as timestamps) with the values from your run.
