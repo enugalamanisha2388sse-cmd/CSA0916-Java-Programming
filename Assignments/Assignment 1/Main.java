@@ -1,5 +1,7 @@
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -37,7 +39,7 @@ final class ParkingUser {
     private final String userId;
     private final UserCategory category;
     private final boolean hasMonthlyPass;
-    private boolean hasOneDayPass;
+    private LocalDate oneDayPassDate;
 
     ParkingUser(String userId, UserCategory category, boolean hasMonthlyPass) {
         if (userId == null || userId.isBlank()) throw new IllegalArgumentException("User ID required.");
@@ -48,8 +50,17 @@ final class ParkingUser {
 
     String getUserId() { return userId; }
     UserCategory getCategory() { return category; }
-    boolean hasValidPass() { return hasMonthlyPass || hasOneDayPass; }
-    void buyOneDayPass() { hasOneDayPass = true; }
+    boolean hasValidPass(LocalDateTime at) {
+        boolean monthlyEligible = category == UserCategory.STUDENT || category == UserCategory.STAFF;
+        return (monthlyEligible && hasMonthlyPass)
+                || (category == UserCategory.VISITOR && oneDayPassDate != null
+                    && oneDayPassDate.equals(at.toLocalDate()));
+    }
+    void buyOneDayPass(LocalDate date) {
+        if (category != UserCategory.VISITOR)
+            throw new IllegalStateException("One-day pass is reserved for visitors.");
+        oneDayPassDate = Objects.requireNonNull(date);
+    }
 }
 
 interface Chargeable {
@@ -118,21 +129,24 @@ final class DeliveryVan extends Vehicle {
     DeliveryVan(String regNo) { super(regNo); }
     @Override protected double ratePerHour() { return 30.0; }
 
-    /** Charges double the car rate for time overlapping 09:00–17:00. */
+    /** Bills the car rate normally and double the car rate only for minutes overlapping 09:00–17:00. */
     double calculateFee(LocalDateTime entry, LocalDateTime exit) {
         if (entry == null || exit == null || exit.isBefore(entry))
             throw new IllegalArgumentException("Invalid parking interval.");
-        double fee = 0.0;
-        LocalDateTime cursor = entry;
-        while (cursor.isBefore(exit)) {
-            LocalDateTime nextHour = cursor.plusHours(1);
-            LocalDateTime end = nextHour.isBefore(exit) ? nextHour : exit;
-            boolean daytime = !cursor.toLocalTime().isBefore(java.time.LocalTime.of(9, 0))
-                    && cursor.toLocalTime().isBefore(java.time.LocalTime.of(17, 0));
-            fee += daytime ? 60.0 : 30.0;
-            cursor = end;
+        long totalMinutes = Duration.between(entry, exit).toMinutes();
+        long daytimeMinutes = 0;
+        LocalDate date = entry.toLocalDate();
+        while (!date.isAfter(exit.toLocalDate())) {
+            LocalDateTime windowStart = date.atTime(LocalTime.of(9, 0));
+            LocalDateTime windowEnd = date.atTime(LocalTime.of(17, 0));
+            LocalDateTime overlapStart = entry.isAfter(windowStart) ? entry : windowStart;
+            LocalDateTime overlapEnd = exit.isBefore(windowEnd) ? exit : windowEnd;
+            if (overlapEnd.isAfter(overlapStart))
+                daytimeMinutes += Duration.between(overlapStart, overlapEnd).toMinutes();
+            date = date.plusDays(1);
         }
-        return fee;
+        long nightMinutes = totalMinutes - daytimeMinutes;
+        return (daytimeMinutes * 60.0 + nightMinutes * 30.0) / 60.0;
     }
 }
 
@@ -192,21 +206,26 @@ final class CampusParkingSystem {
     }
 
     double exit(String regNo, LocalDateTime exitTime) {
+        return exit(regNo, exitTime, 0);
+    }
+
+    /** Exit overload accepts the actual energy supplied to an EV charger. */
+    double exit(String regNo, LocalDateTime exitTime, int chargingKWh) {
+        if (chargingKWh < 0) throw new IllegalArgumentException("Charging energy cannot be negative.");
         ParkingTicket ticket = activeTickets.get(regNo.toUpperCase());
         if (ticket == null) throw new IllegalArgumentException("No active ticket for vehicle.");
         if (exitTime.isBefore(ticket.getEntryTime())) throw new IllegalArgumentException("Exit precedes entry.");
         long minutes = Duration.between(ticket.getEntryTime(), exitTime).toMinutes();
         double fee;
-        if (ticket.getUser().hasValidPass()) {
+        if (ticket.getUser().hasValidPass(exitTime)) {
             fee = 0.0;
         } else if (ticket.getVehicle() instanceof DeliveryVan van) {
             fee = van.calculateFee(ticket.getEntryTime(), exitTime);
         } else {
             fee = ticket.getVehicle().calculateFee(Math.toIntExact(minutes));
         }
-        if (ticket.getVehicle() instanceof Chargeable chargeable
-                && ticket.getVehicle() instanceof ElectricCar) {
-            fee += chargeable.chargingFee(10);
+        if (ticket.getVehicle() instanceof Chargeable chargeable) {
+            fee += chargeable.chargingFee(chargingKWh);
         }
         if (!facility.release(ticket.getFloor(), ticket.getSlot()))
             throw new IllegalStateException("Could not release the assigned slot.");
