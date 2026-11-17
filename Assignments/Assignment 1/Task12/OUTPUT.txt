@@ -1,0 +1,10 @@
+# Task 12 – Output record
+
+**Reference output, not a screenshot.** These are expected/reference values, not a claim of a verified local run.
+
+```text
+Floors=5, total slots=12
+E-bike flat fee=Rs 40.0
+Van 09:00-10:00 fee=Rs 60.0
+Visitor day pass valid=true
+```
