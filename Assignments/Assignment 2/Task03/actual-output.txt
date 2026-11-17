@@ -1,0 +1,5 @@
+Q3 - equals/hashCode contract
+Broken class set size (hash values are identity-based; result can vary with collisions): 2
+Unique students: 2
+After changing hash key, contains same object: false (may be false)
+Use immutable fields in equals/hashCode while an object is stored in a hash collection.
