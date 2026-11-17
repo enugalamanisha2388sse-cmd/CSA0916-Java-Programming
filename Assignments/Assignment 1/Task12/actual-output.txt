@@ -1,0 +1,10 @@
+# Task 12 – Actual CI console output
+
+Captured by the repository's GitHub Actions run on JDK 17 on 17 November 2026. This is the console output from the automated runner, not a screenshot from the student's laptop. Timestamp values are specific to that run.
+
+```text
+Floors=5, total slots=12
+E-bike flat fee=Rs 40.0
+Van 09:00-10:00 fee=Rs 60.0
+Visitor day pass valid=true
+```
