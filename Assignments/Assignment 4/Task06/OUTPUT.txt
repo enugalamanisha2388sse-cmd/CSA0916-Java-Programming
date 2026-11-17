@@ -1,0 +1,5 @@
+TASK 6 - CAMPUS EVENT REGISTRATION
+GUI/JDBC task: output is interactive and requires MySQL plus Connector/J.
+Run schema.sql first; set credentials; compile with Connector/J on the classpath.
+Test: successful registration, invalid email, duplicate email/event, event filter and export.
+The source currently shows an export placeholder; CSV export must be completed and tested before submission.
