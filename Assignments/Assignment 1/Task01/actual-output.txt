@@ -1,0 +1,7 @@
+# Task 1 – Actual CI console output
+
+Captured by the repository's GitHub Actions run on JDK 17 on 17 November 2026. This is the console output from the automated runner, not a screenshot from the student's laptop. Timestamp values are specific to that run.
+
+```text
+TN01AB1234 CAR STU001
+```
