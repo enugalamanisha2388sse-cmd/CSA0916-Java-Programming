@@ -1,0 +1,12 @@
+Failed score10.txt: NumberFormatException: For input string: "corrupt"
+Failed missing.txt: IOException: Missing file
+Pool=1 success=9 failed=2 scoreTotal=450 elapsedMs=7
+Failed score10.txt: NumberFormatException: For input string: "corrupt"
+Failed missing.txt: IOException: Missing file
+Pool=2 success=9 failed=2 scoreTotal=450 elapsedMs=1
+Failed score10.txt: NumberFormatException: For input string: "corrupt"
+Failed missing.txt: IOException: Missing file
+Pool=4 success=9 failed=2 scoreTotal=450 elapsedMs=1
+Failed score10.txt: NumberFormatException: For input string: "corrupt"
+Failed missing.txt: IOException: Missing file
+Pool=8 success=9 failed=2 scoreTotal=450 elapsedMs=1
