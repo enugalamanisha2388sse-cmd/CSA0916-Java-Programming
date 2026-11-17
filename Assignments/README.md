@@ -1,9 +1,9 @@
 # Java Assignments
 
-This directory contains the five Java assignment submissions. Each assignment has its own folder. Source code and run instructions will be added as the corresponding assignment brief is provided.
+This directory contains five assignment folders. Source code and task-wise evidence are added as each assignment PDF is received.
 
-- [Assignment 1](Assignment%201/README.md) – Campus Smart-Parking System
-- Assignment 2 – awaiting assignment PDF
-- Assignment 3 – awaiting assignment PDF
-- Assignment 4 – awaiting assignment PDF
-- Assignment 5 – awaiting assignment PDF
+- [Assignment 1](Assignment%201/README.md) – Campus Smart-Parking System (Tasks 1–12 and Java source)
+- [Assignment 2](Assignment%202/)
+- [Assignment 3](Assignment%203/)
+- [Assignment 4](Assignment%204/)
+- [Assignment 5](Assignment%205/)
