@@ -1,0 +1,8 @@
+Q1 - Ticket text construction (average of 5 measured runs; ms)
+Workload, String +, StringBuilder, StringBuffer
+short ticket (5 fields x 1 tickets), 0.028, 0.012, 0.014
+medium load (50 fields x 1000 tickets), 3.886, 2.460, 7.334
+large load (100 fields x 3000 tickets), 17.682, 3.460, 37.014
+Estimated intermediate construction: repeated + creates successive immutable strings; builder/buffer append into a mutable buffer.
+Recommendation: StringBuilder for a thread-confined ticket; StringBuffer only when synchronised access to one shared mutable buffer is genuinely required.
+Complexity: repeated concatenation can copy O(n^2) total characters for n similarly sized fields; builder/buffer are amortized O(total output characters), often simplified to O(n) fields.
