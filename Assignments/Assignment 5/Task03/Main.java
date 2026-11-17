@@ -119,6 +119,8 @@ public class Main {
     public static void main(String[] args) {
         try (Connection connection = openConnection()) {
             StudentDao dao = new StudentDao(connection);
+            // Remove an earlier demo row so the program can be executed repeatedly.
+            dao.delete(1001);
             Student sample = new Student(1001, "REG1001", "Asha", "asha@example.com");
 
             dao.insert(sample);
