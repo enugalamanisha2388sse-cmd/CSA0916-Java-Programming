@@ -1,0 +1,6 @@
+TASK 5 - CURRENCY CONVERTER GUI
+Launch with: javac Main.java && java Main
+Valid example: 10 USD to INR -> result label and dialog show a demo-rate conversion.
+Invalid example: enter abc or a negative value -> error dialog and Invalid amount label.
+Press Enter in amount field to convert.
+Capture valid and invalid screenshots locally.
