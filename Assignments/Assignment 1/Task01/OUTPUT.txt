@@ -1,0 +1,10 @@
+# Output record – Task 01
+
+**Status:** Expected/reference console output, prepared from the source and assignment brief. This is not a screenshot and is not claimed as a verified local execution.
+
+```text
+Expected console output (entry time varies with execution):
+TN01AB1234 CAR STU001
+```
+
+Run the Java source in this folder to capture your actual output screenshot. Replace any runtime placeholders (such as timestamps) with the values from your run.
